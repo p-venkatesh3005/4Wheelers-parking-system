@@ -1,0 +1,110 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: beige;
+    text-align: center;
+}
+form{
+    max-width: 700px;
+    margin:0 auto;
+    padding:2rem;
+    background-color:rgb(152, 212, 212);
+    border-radius:8px;
+    text-align:left;
+}
+label{
+    display:block;
+    margin-bottom:0.25rem;
+    font-weight:bold;
+    margin-left:30px;
+}
+input{
+    width:80%;
+    padding:10px;
+    margin-bottom:10px; 
+    margin-left:30px;
+}
+button{
+    padding:10px;
+    background-color:#007bff;
+    color:white;
+    border-radius:5px;
+    margin-left:30px;
+}
+a{
+    text-decoration:none;
+    color:#007bff;
+    border-radius:8px;
+    text-align:center;
+}
+.grp{
+    margin-bottom:1rem;
+}
+.grp label{
+    width:30%;
+    font-weight:bold;
+}
+.btn{
+    display:inline-block;
+    padding:10px;
+    background-color:#007bff;
+    color:white;
+}
+table{
+    width:100%;
+}
+#wer{
+    margin-left:360px;
+    padding:10px;
+    width:40%;
+    text-align:center;
+    background-color:rgb(152, 212, 212);
+}
+#srch{
+    height:30px;
+    margin-left:0px;
+}
+@media(max-width:768px) {
+  form{
+    padding:1.5rem;
+  }
+  label,
+  input,
+  button,
+  a.btn{
+    width:100%;
+    margin-left:0;
+  }
+  #srch{
+    width:100%;
+    margin-left:0;
+  }
+  table th,
+  table td{
+    font-size:0.9rem;
+  }
+}
+@media(max-width:480px) {
+  form{
+    padding: 1rem;
+  }
+  input,
+  select{
+    font-size: 1rem;
+  }
+  button,
+  a.btn{
+    width: 100%;
+    font-size: 1rem;
+    margin-left: 0;
+  }
+  table th,
+  table td{
+    font-size:0.8rem;
+  }
+  h1,
+  h2,
+  h3{
+    font-size:1.3rem;
+    text-align:center;
+  }
+}

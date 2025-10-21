@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+</head>
+<body>
+    <nav id="head">
+    <h1><center><b>Welcome to the Vehicle Parking App</b></center></h1>
+    </nav>
+    <nav id="head2">
+        <h2>choose your role</h2>
+    </nav>
+    <div id="buttons">
+        <form action="{{ url_for('role') }}" method="POST">
+        <div class="bdiv">
+        <button type="submit" name="role" value="user"><h1>USERS</h1></button>
+            </div>
+        </form>
+    <form action="{{ url_for('role') }}" method="POST">
+        <div class="bdiv">
+        <button type="submit" name="role" value="admin"><h1>ADMIN</h1></button>
+        </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/s4.css">
+</head>
+<body><nav id="a1">
+    {% if m %}
+    <script>
+        alert("Can't Delete Occupied Lot")
+    </script>
+    {% endif %}
+    <div><center><h1>Admin Dashboard</h1></center></div>
+    <div id="a2">
+        <label><a href="/adashboard/profile">HOME|</a></label>
+        <label><a href="/adashboard/users">Users|</a></label>
+        <label><a href="/adashboard/Search">Search|</a></label>
+        <label><a href="/adashboard/summary">Summary|</a></label>
+        <label><a href="/admin/login">Logout|</a></label>
+        <label><a href="/adashboard/editprofile">View/Edit Profile|</a></label></nav>
+    <h2><center>Parking lots</center></h2>
+    
+    <center><a id="pl" href="/adashboard/addparkinglot">Add Parking Lot</a></center>
+    <div id="main"><div id="lot">
+    {% for j in lots %}
+    <div class="lot">
+    <h3>{{ j.name }}</h3>
+    <center>
+        <label><a id="ss" href="/adashboard/{{ j.id }}/editlot">Edit</a></label>
+        <label><a id='ss'href="/adashboard/{{ j.id }}/remove">Remove</a></label></center>
+        <p> price:{{ j.price }}rs/hr</p>
+        <div id="slot">
+            {% for i in range(1,j.max_slots+1) %}
+            {% set spot_id=j.id|string+i|string %}
+            {% if not delsp(j.id,i) %}
+            {% if not booked(spot_id) %}
+        <a href="/adashboard/{{ j.id }}{{ i }}/viewsp"><button style="background-color: red; color: white;">Slot {{ i }}</button></a>
+            {% else %}
+        <a href="/adashboard/{{ j.id }}{{ i }}/viewsp"><button style="background-color: green; color: white;">Slot {{ i }}</button></a>
+            {% endif %}
+            {% else %}
+        {% endif %}
+{% endfor %}
+
+        </div>
+        <p >.......................</p>
+    </div>
+    {% endfor %}
+    </div>
+    
+    
+    </nav>
+</body>
+</html>

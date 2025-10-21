@@ -1,0 +1,30 @@
+
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/s2.css">
+</head>
+<body>
+    {% if l %}
+    <script>
+        alert("Check your details")
+    </script>
+    {% endif %}
+    <nav id="abc">
+    <div class="form1">
+        <h2>Login</h2>
+        <form action="/user/login" method="post">
+            <label >Email:</label>
+            <input type="email" id="mail" name="email" required>
+            <br>
+            <label>Password:</label>
+            <input type="password" id="password" name="password" required>
+            <br>
+            <button type="submit">Login</button><br>
+            <a href="{{ url_for('user_bp.user_register') }}">Create new account/register</a>
+    </div>
+    </nav>
+</body>

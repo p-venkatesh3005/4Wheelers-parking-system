@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="/static/S3.CSS">
+</head>
+<body>
+    <center><h1>Edit Profile</h1></center>
+    <form action="/adashboard/editprofile" method="post">
+        <label for="name">New Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="password">New Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        <label for="confirm_password">New Confirm Password:</label>
+        <input type="password" id="confirm_password" name="confirm_password" required><br><br>
+        <button  type="submit">Update</button>
+        <a  class="btn" href="/adashboard/profile">Cancel</a>
+    </form>
+</body>
+</html>

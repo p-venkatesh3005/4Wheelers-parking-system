@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/S3.CSS">
+</head>
+<body>
+    {% if m %}
+        <script>
+            alert("Can't Delete Occupied spot")
+        </script>
+    {% endif %}
+    <form action="/adashboard/{{ spot_id }}/spd" method="POST">
+    <h2><center>View/Delete spot</center></h2>
+    <label for="sp">spot id:</label>
+    <input id="sp" name="spot" value="{{ spot_id }}" readonly><br>
+    <label>Status:</label>
+    <button type="submit" name="status" value="{{ status }}">{{ status }}</button><br>
+    <br>
+    
+    <a href="/adashboard/{{ spot_id }}/{{ status }}/delspot"><button type="button">Delete</button></a>
+    <a href="/adashboard/profile"><button type="button">Close</button></a>
+
+    </form>
+    
+</body>
+</html>

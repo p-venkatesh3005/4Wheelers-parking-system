@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="/static/s6.css">
+</head>
+<body>
+    <nav class="a123"><center>
+        <h1><center>User Dashboard</center></h1>
+        <label><a href="/udashboard/{{ user.id }}/profile">HOME|</a></label>
+        <label><a href="/udashboard/{{ user.id }}/summary">SUMMARY|</a></label>
+        <label><a href="/user/login">Logout</a></label>
+        </center>
+    </nav>
+    <div>
+        <div>
+<marquee scrollamount="3"><h2>Welcome {{ user.name }}</h2></marquee>
+    <h2><center>Recent Parking history</center></h2>
+    <table id="we">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Vehicle Number</th>
+                <th>Duration</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for k in spot %}
+            <tr>
+                <td>{{ k.id }}</td>
+                <td>{{ k.vehicle_number }}</td>
+                <td>{{ k.start_time }}-----{{ k.end_time }}</td>
+                <td>
+{% if k.Action == "Release" %}
+    <form action="/udashboard/{{ user.id }}/{{ k.spot_id }}/release" method="POST">
+        <button type="submit" style="background-color:rgb(84, 161, 104); color: white;">
+            <center>{{ k.Action }}</center>
+        </button>
+    </form>
+{% else %}
+    <a href="/udashboard/{{ user.id }}/profile">
+        <button style="background-color: rgb(236, 66, 66); color: white;">
+            {{ k.Action }}
+        </button>
+    </a>
+{% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+        </div>
+        {% if n %}
+        <script>
+            alert("No location found")
+        </script>
+        {% endif %}
+    <div>
+        {% if o %}
+        <script>
+            alert("No parking lots found for the given location")
+        </script>
+        {% endif %}
+    <div id="rrr">
+        <form  action="/udashboard/{{ user.id }}/search" method="POST">
+            <h2><center>Search lots</center></h2>
+        <label for="search">Search with location:</label>
+        <input id="search" name="search"></input>
+        <label><button id="ol">search</button></label>
+        </form>
+    </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Adress</th>
+                    <th>Availality</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for lot in results %}
+                <tr>
+                    <td>{{ lot.id }}</td>
+                    <td>{{ lot.address }}</td>
+                    <td>{{ lot.status }}</td>
+                    <td>{{ lot.price }}</td>
+                    <td>
+                        <form action="/udashboard/{{ user.id }}/{{ lot.id }}/book" method="POST">
+                            <input type="hidden" name="lot_id" value="{{ lot.id }}">
+                            <button type="submit">Book</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+    </div>
+</body>
+</html>

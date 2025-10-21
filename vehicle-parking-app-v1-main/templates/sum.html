@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/s9.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+</head>
+<body>
+    <h2>SUMMARY</h2>
+    <h3>Frequently Booked LOTS(booked by you)</h3>
+    <nav id="hl">
+    <canvas id="dl"></canvas>
+    </nav><nav id="f1">
+    <h3>VEHICLE SUMMARY(vehicles used for booking)</h3>
+    <canvas id="ff"></canvas>
+    </nav>
+    <script id="dd" type="application/json">
+        {
+            "lab1":{{ l1|tojson}},
+            "val1":{{ l2|tojson}},
+            "lab2":{{ p1|tojson}},
+            "val2":{{ p2|tojson}}
+        }
+    </script>
+    <script>
+        const x=document.getElementById("dl").getContext('2d')
+        const y=JSON.parse(document.getElementById("dd").textContent);
+        new Chart(x,{
+            type:"bar",
+            data:{labels:y.lab1,
+                datasets:[{
+                    label:"Top Booked Lots",
+                    data:y.val1,
+                    borderColor:"rgba(75, 192, 192, 1)",borderWidth:1,
+                    backgroundColor:"rgba(75, 192, 192, 0.2)",
+                }]
+            },
+            options:{
+                responsive:true,
+                plugins:{title:{
+                        display:true,
+                        text:"Top booked lots"
+                    },
+                legend:{
+                    display:true,
+                }
+            }
+        }
+        })
+    </script>
+    <script>
+        const w=document.getElementById("ff").getContext('2d')
+        const g=JSON.parse(document.getElementById("dd").textContent);
+        const t=g.lab2.length;
+        const bg=[];
+        const bc=[];
+        for(let i=0;i<t;i++){
+            const r=Math.round((360/t)*i);
+            bg.push(`hsl(${r},70%,70%)`);
+            bc.push(`hsl(${r},70%,30%)`);
+        }
+        new Chart(w,{
+            type:"pie",
+            data:{
+                labels:g.lab2,
+                datasets:[{
+                    label:"Vechile summary",
+                        data:g.val2,
+                        backgroundColor:bg,
+                        borderColor:bc,
+                        borderWidth:1
+                    }]
+                }
+        ,
+            options:{
+                responsive:true,
+                plugins:{title:{
+                        display:true,
+                        text:"Vechile summary"
+                    },
+                    legend:{
+                        display:true,
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+<a id="ok" href="/udashboard/{{ user_id }}/profile">Back to Dashboard</a>
+</html>

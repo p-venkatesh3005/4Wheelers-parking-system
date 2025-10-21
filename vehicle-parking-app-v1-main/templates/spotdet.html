@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/S3.CSS">
+</head>
+<body>
+    <form action="/adashboard/profile" method="POST">
+    <h2><center>Spot details</center></h2>
+    <label>spot id:</label>
+    <input value="{{ spot.spot_id}}" readonly><br>
+    <label> User Id:</label>
+    <input value="{{ spot.user_id}}"><br>
+    <label>vehicle number</label>
+    <input value="{{ spot.vehicle_number }}" readonly><br>
+    <label> start time:</label>
+    <input value="{{ spot.start_time}}"><br>
+    <label>end time:</label>
+    <input value="{{ spot.end_time }}" readonly><br>
+    <button type="submit">close</button>
+    </form>
+</body>
+</html>

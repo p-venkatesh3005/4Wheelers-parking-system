@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Release Parking Spot</title>
+    <link rel="stylesheet" href="/static/S3.CSS">
+</head>
+<body>
+    <form action="/udashboard/{{ spot.user_id }}/{{ spot.spot_id }}/released" method="POST">
+        <h1><center>Release Parking Spot</h1></center>
+        
+    {% if spot %}
+        <h2><center>Spot Details</h2></center>
+    {% else %}
+        <h2>No Spot Found</h2>
+    {% endif %}
+    <label for="spot_id">Spot ID:</label>
+    <input type="text" id="spot_id" name="spot_id"  value="{{ spot.spot_id }}" readonly><br>
+    <label for="vehicle_number">Vehicle Number :</label>
+    <input type="text" id="vehicle_number" name="vehicle_number"  value="{{ spot.vehicle_number }}" readonly><br>
+    <label for="start_time">Start Time :</label>
+    <input type="text" id="start_time" name="start_time"  value="{{ spot.start_time }}" readonly><br>
+    <label for="end_time">End Time :</label>
+    <input type="text" id="end_time" name="end_time"  value="{{ spot.end_time }}" readonly><br>
+    <label for="price">Price :</label>
+    <input type="text" id="price" name="price"  value="{{ price }}" readonly><br>
+    <br>
+        <button type="submit">Release Spot</button>
+        <a href="/udashboard/{{ spot.user_id }}/profile" class="btn">Cancel</a>
+    </form>
+</body>
+</html>

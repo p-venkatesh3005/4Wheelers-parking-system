@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/s8.css">
+</head>
+<body>
+    <div id="hh">
+    <h1>Booking Confirmation</h1>
+    <p>Thank you {{ user.name }} for booking your spot!</p>
+    <h2>Booking Details:</h2>
+    <p>-Lot ID: {{ lot.id }}</p>
+    <p>-Spot ID: {{ spot_id }}</p>
+    <p>-Vehicle Number: {{ vehicle_number }}</p>
+    <p>-Start Time: {{ start_time }}</p>
+    <p>-End Time: {{ end_time }}</p>
+    <p>-Total Time: {{ duration }} hours</p>
+    <p>-Total Price: {{ price }}Rs</p>
+    <p>Your booking has been successfully made.</p>
+    <P>PAY THE {{ price }}Rs AT THE COUNTER</P>
+    </div>
+<footer><a href="/udashboard/{{ user.id }}/profile">Back to Dashboard</a></footer>
+</div>
+</html>

@@ -1,0 +1,130 @@
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    padding:0;
+    width:100%;
+    margin:0;
+    padding:0;
+    background-color:rgb(245, 245, 245);
+}
+h1{
+    background-color:rgb(34, 45, 50);
+    color:rgb(255, 255, 255);
+    padding:20px;
+    margin-bottom:0;
+}
+nav{
+    background-color:rgb(34, 45, 50);
+    height:93px;
+}
+.a123 a{
+    color:aliceblue;
+    padding-bottom:40px;
+    text-decoration:none;
+}
+table{
+    border-collapse:collapse;
+    width:90%;
+    margin-left:50px;
+    margin-bottom:40px;
+}
+td,th{
+    border:1.5px solid black;
+    height:33px;
+    text-align:center;
+}
+#rrr{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:30px;
+    width:100%;
+    font-size:20px;
+}
+button{
+    font-size:20px;
+    background-color:lightgrey;
+    border-radius:6px;
+}
+#ll{
+    text-decoration:none;
+    text-align:center;
+    background-color:aquamarine;
+    padding:10px;
+    margin-left:560px;
+}
+#er{
+    background-color:rgb(34, 45, 50);
+    margin-top:0;
+    padding:15px;
+    color:antiquewhite;
+}
+@media(max-width:768px){
+table{
+width:100%;
+margin:0 auto 20px auto;
+font-size:14px;
+}
+td,th{
+font-size:14px;
+text-align: center;
+}
+#rrr{
+flex-direction:column;
+align-items:stretch;
+margin:10px;
+}
+#rrr form{
+width:90%;
+}
+#rrr label,#rrr input,#rrr button{
+width:100%;
+box-sizing:border-box;
+margin-bottom:0.5rem;
+}
+.a123 label{
+display:inline-block;
+margin:0 5px;
+}
+button{
+width:100%;
+font-size:18px;
+align-items: center;
+}
+}
+@media(max-width: 768px) {
+  table{
+    width:95%;
+    margin:0 auto 20px auto;
+    font-size:14px;
+  }
+  th,td{
+    font-size:14px;
+    padding:8px;
+  }
+  #ll{
+    display:block;
+    width:90%;
+    margin:10px auto;
+    font-size:16px;
+    text-align:center;
+  }
+}
+
+@media(max-width: 480px) {
+  h2#er{
+    font-size: 20px;
+    padding: 10px;
+  }
+  table{
+    width: 100%;
+    font-size:12px;
+  }
+  th,td{
+    font-size:12px;
+    padding:6px;
+  }
+  #ll{
+    width:95%;
+    font-size:14px;
+  }
+}

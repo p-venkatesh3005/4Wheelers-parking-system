@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Users vs Their Bookings</title>
+  <link rel="stylesheet" href="/static/s9.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h2>Summary</h2>
+  <nav id="hl">
+    <h3>Users vs Their Bookings</h3>
+  <canvas id="ub"></canvas>
+  </nav>
+  <h3>Top Demanded Areas</h3>
+  <div id="td"><canvas id="ta"></canvas>
+  </div>
+  </nav>
+   <script id="cd" type="application/json">
+    {
+      "labels1": {{ ul|tojson }},
+      "data1": {{ uc|tojson }},
+      "labels2": {{ ta|tojson }},
+      "data2": {{ tc|tojson }}  
+    }
+  </script>
+  <script>
+  const cd = JSON.parse(document.getElementById("cd").textContent);
+  const x = document.getElementById("ub").getContext('2d');
+  new Chart(x,{
+    type:"bar",
+    data:{
+      labels:cd.labels1,
+      datasets: [{label: 'No of bookings',data:cd.data1,
+        backgroundColor: 'rgba(54,162,235,0.7)'
+      }]
+    },
+    options:{
+      responsive: true,
+      plugins:{
+        legend:{ display: false },
+        title:{
+          display:true,
+          text:'Users vs Their Bookings'
+        }
+      }
+    }
+  });
+  const y=document.getElementById("ta").getContext('2d');
+new Chart(y,{
+  type: "pie",
+  data:{
+    labels:cd.labels2,
+    datasets:[{
+      label:'No of bookings',
+      data:cd.data2,
+      backgroundColor:[
+        'rgba(255,99,132,0.7)',
+        'rgba(54,162,235,0.7)',
+        'rgba(255,206,86,0.7)',
+        'rgba(75,192,192,0.7)',
+        'rgba(153,102,255,0.7)'
+      ]
+    }]
+  },
+  options:{
+    responsive:true,
+    plugins:{
+      legend:{ display: true },
+      title:{
+        display:true,
+        text:'Areas Vs Their Demand'
+      }
+    }
+  }
+});
+
+</script>
+<footer>
+  <a id="ok" href="/adashboard/profile">Back to Dashboard</a>
+</footer>
+</body>
+</html>

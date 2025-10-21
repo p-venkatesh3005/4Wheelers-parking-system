@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/S3.CSS">
+</head>
+<body><div>
+    <div>
+    <h2><center>Search</center></h2>
+    <form action="/adashboard/Search" method="post">
+    <label for="search_type">Search Type:
+    <select  id="srch" name="search_type" id="search_type">
+    <option value="user_id">user_id</option>
+    <option value="ploc">parking lot by location</option>
+    </select></label>
+    <br><br>
+    <input type="text" name="search" placeholder="Enter Here" required>
+    <br></br>
+    <button type="submit">Search</button>
+    </form>
+    </div>
+    <div>
+    <h2><center>Search Results</center></h2>
+    {% if search_type == 'user_id' %}
+        <h3>User Details</h3>
+            <table border="1">
+                <tr>
+                    <th>User ID</th>
+                    <th>Email</th>
+                    <th>Vehicle Number</th>
+                    <th>Duration</th>
+                </tr>
+        {% if not users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>--</td>
+                <td>--</td>
+            </tr>
+        {% endif %}
+                {% for u in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ u.vehicle_number }}</td>
+                    <td>{{ u.start_time }} --- {{ u.end_time }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+    {% elif search_type == 'ploc' %}
+    <div id="wer"> 
+    <h3>Parking Lot Details</h3>
+        {% if not lots %}
+            <p>No lots found.</p>
+        {% else %}
+            {% for lot in lots %}
+            <div class="lot">
+                <h3>{{ lot.name }}</h3>
+                <p>Price: {{ lot.price }} Rs/hr</p>
+                <div>
+                    {% for i in range(1, lot.max_slots + 1) %}
+                        <button>Slot {{ i }}</button>
+                    {% endfor %}
+                </div>
+            </div>  
+            <p>---------</p>
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+    </div>
+        </div>
+        </div>
+        <br>
+        <footer>
+<a href="/adashboard/profile" class="btn">Back to Dashboard</a><br> </footer>
+</body>
+</html>
